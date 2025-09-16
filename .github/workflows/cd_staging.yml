@@ -28,7 +28,7 @@ jobs:
 
             cd testBMS
             git pull
-            source ~/.bashrc
+            export PATH=/home/azureuser/.nvm/versions/node/v22.19.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
             npm i pnpm
             pnpm install 
             pnpm run build 
