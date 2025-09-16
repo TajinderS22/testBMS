@@ -22,11 +22,12 @@ jobs:
           ssh -i ~/ssh_key azureuser@40.81.243.53 << 'EOF'
             set -e
             echo "Connected to server"
-      
+
             # Add global npm bin to PATH
             export PATH="$PATH:$(npm bin -g)"
-      
+
             cd testBMS
+            npm i pnpm
             git pull
             pnpm install 
             pnpm run build 
@@ -34,4 +35,4 @@ jobs:
             pm2 restart staging-fe-server
             pm2 restart staging-ws-server
           EOF
-      
+
