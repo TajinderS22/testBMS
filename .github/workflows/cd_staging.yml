@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: |
           echo "${{ secrets.AZURE_STAGING_SSH_PRIVATE_KEY }}" &> ~/ssh_key
-          ssh -i ~/ssh_key azureuser@40.81.243.53 -'yes'
+          ssh -i ~/ssh_key azureuser@40.81.243.53 -yes
           cd testBMS && git pull
           pnpm install 
           pnpm run build 
