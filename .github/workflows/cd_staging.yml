@@ -27,8 +27,9 @@ jobs:
             export PATH="$PATH:$(npm bin -g)"
 
             cd testBMS
-            npm i pnpm
             git pull
+            source ~/.bashrc
+            npm i pnpm
             pnpm install 
             pnpm run build 
             pm2 restart staging-be-server
