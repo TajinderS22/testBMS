@@ -7,15 +7,16 @@ on:
 jobs:
   redeploy_everything:
     name: Deploy everthing to the staging cluster
-
+    runs-on: ubuntu-latest
     steps:
-      - name: SSH Into Server
-      - run: |
-          echo ${{ secrets.AZURE_STAGING_SSH_PRIVATE_KEY }} &> ~/ssh_key
-          ssh -i ~/ssh_key azureuser@40.81.243.53
-          cd testBMS && git pull
-          pnpm install 
-          pnpm run build 
-          pm2 restart staging-be-server
-          pm2 restart staging-fe-server
-          pm2 restart staging-ws-server
+
+      name: SSH Into Server
+      run: |
+        echo ${{ secrets.AZURE_STAGING_SSH_PRIVATE_KEY }} &> ~/ssh_key
+        ssh -i ~/ssh_key azureuser@40.81.243.53
+        cd testBMS && git pull
+        pnpm install 
+        pnpm run build 
+        pm2 restart staging-be-server
+        pm2 restart staging-fe-server
+        pm2 restart staging-ws-server
