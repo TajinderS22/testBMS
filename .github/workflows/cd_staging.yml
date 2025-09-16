@@ -27,9 +27,8 @@ jobs:
             export PATH="$PATH:$(npm bin -g)"
 
             cd testBMS
-            git pull
-            export PATH=/home/azureuser/.nvm/versions/node/v22.19.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-            npm i pnpm
+            git pull origin main  && export PATH=/home/azureuser/.nvm/versions/node/v22.19.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+            npm i -g  pnpm
             pnpm install 
             pnpm run build 
             pm2 restart staging-be-server
